@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: ervinarukii
+  api_key: '418114827168211'
+  api_secret: 418mPhO3hMTiKK8BwEtfSI9jsV4
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: ervinarukii
+  api_key: '418114827168211'
+  api_secret: 418mPhO3hMTiKK8BwEtfSI9jsV4
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: ervinarukii
+  api_key: '418114827168211'
+  api_secret: 418mPhO3hMTiKK8BwEtfSI9jsV4
+  enhance_image_tag: true
+  static_image_support: false

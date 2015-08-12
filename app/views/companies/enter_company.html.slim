@@ -1,0 +1,10 @@
+- @page = "Enter Company"
+section#registration.container
+  = form_for 'company',url: assign_company_path, html: {class: "center", method: :post} do |f|
+    fieldset.registration-form
+      .form-group
+        = f.text_field :host, class: "form-control", placeholder: "Enter your company's host"
+      .form-group
+        = f.submit "Enter", class: "button btn btn-info btn-md btn-block"
+/! /#registration
+

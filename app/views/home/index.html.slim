@@ -1,0 +1,306 @@
+doctype html
+html lang="en" 
+  meta charset="utf-8"
+  meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+  meta name="viewport" content="width=device-width, initial-scale=1.0"
+  title= content_for?(:title) ? yield(:title) : "Home"
+  = csrf_meta_tags
+
+  /! Le HTML5 shim, for IE6-8 support of HTML elements
+  /[if lt IE 9]
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+  = stylesheet_link_tag "application", :media => "all"
+  = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
+  = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
+  = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
+  = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
+  = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+  = javascript_include_tag "application"
+
+body
+  = render 'layouts/menu'
+  section#main-slider.no-margin
+    .carousel.slide.wet-asphalt
+      ol.carousel-indicators
+        li.active data-slide-to="0" data-target="#main-slider" 
+        li data-slide-to="1" data-target="#main-slider" 
+        li data-slide-to="2" data-target="#main-slider" 
+      .carousel-inner
+        .item.active style="background-image: url('assets/slider/background1.jpg')"
+          .container
+            .row
+              .col-sm-12
+                .carousel-content.centered
+                  h2.animation.animated-item-1 Welcome
+                  p.animation.animated-item-2 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        /! /.item
+        .item style=("background-image: url('assets/slider/background2.jpg')") 
+          .container
+            .row
+              .col-sm-12
+                .carousel-content.center.centered
+                  h2.boxed.animation.animated-item-1 Clean, Crisp, Powerful and Responsive Web Design
+                  p.boxed.animation.animated-item-2 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                  br/
+                  a.btn.btn-md.animation.animated-item-3 href="#"  Learn More
+        /! /.item
+        .item style=("background-image: url('assets/slider/background3.jpg')") 
+          .container
+            .row
+              .col-sm-6
+                .carousel-content.centered
+                  h2.animation.animated-item-1 Powerful and Responsive Web Design Theme
+                  p.animation.animated-item-2 Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+                  a.btn.btn-md.animation.animated-item-3 href="#"  Learn More
+              .col-sm-6.hidden-xs.animation.animated-item-4
+                .centered
+                  .embed-container
+                    iframe width="560" height="315" src="https://www.youtube.com/embed/MIDJaOjvmJQ" frameborder="0" allowfullscreen
+        /! /.item
+      /! /.carousel-inner
+    /! /.carousel
+    a.prev.hidden-xs data-slide="prev" href="#main-slider" 
+      i.icon-angle-left
+    a.next.hidden-xs data-slide="next" href="#main-slider" 
+      i.icon-angle-right
+  /! /#main-slider
+
+  section#services.emerald
+    .container
+      .row
+        .col-md-4.col-sm-6
+          .media
+            .pull-left
+              i.icon-twitter.icon-md
+            .media-body
+              h3.media-heading Twitter Marketing
+              p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
+        /! /.col-md-4
+        .col-md-4.col-sm-6
+          .media
+            .pull-left
+              i.icon-facebook.icon-md
+            .media-body
+              h3.media-heading Facebook Marketing
+              p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
+        /! /.col-md-4
+        .col-md-4.col-sm-6
+          .media
+            .pull-left
+              i.icon-google-plus.icon-md
+            .media-body
+              h3.media-heading Google Plus Marketing
+              p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
+        /! /.col-md-4
+  /! /#services
+
+  section#recent-works
+    .container
+      = bootstrap_flash
+      .row
+        .col-md-3
+          h3 Our Latest Project
+          p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          .btn-group
+            a.btn.btn-danger data-slide="prev" href="#scroller" 
+              i.icon-angle-left
+            a.btn.btn-danger data-slide="next" href="#scroller" 
+              i.icon-angle-right
+          p.gap
+        .col-md-9
+          #scroller.carousel.slide
+            .carousel-inner
+              .item.active
+                .row
+                  .col-xs-4
+                    .portfolio-item
+                      .item-inner
+                        img.img-responsive alt="" src="images/portfolio/recent/item1.png" /
+                        h5
+                          | Nova - Corporate site template
+                        .overlay
+                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                            i.icon-eye-open
+                  .col-xs-4
+                    .portfolio-item
+                      .item-inner
+                        img.img-responsive alt="" src="images/portfolio/recent/item3.png" /
+                        h5
+                          | Fornax - Apps site template
+                        .overlay
+                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                            i.icon-eye-open
+                  .col-xs-4
+                    .portfolio-item
+                      .item-inner
+                        img.img-responsive alt="" src="images/portfolio/recent/item2.png" /
+                        h5
+                          | Flat Theme - Business Theme
+                        .overlay
+                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                            i.icon-eye-open
+                /! /.row
+              /! /.item
+              .item
+                .row
+                  .col-xs-4
+                    .portfolio-item
+                      .item-inner
+                        img.img-responsive alt="" src="images/portfolio/recent/item2.png" /
+                        h5
+                          | Flat Theme - Business Theme
+                        .overlay
+                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                            i.icon-eye-open
+                  .col-xs-4
+                    .portfolio-item
+                      .item-inner
+                        img.img-responsive alt="" src="images/portfolio/recent/item1.png" /
+                        h5
+                          | Nova - Corporate site template
+                        .overlay
+                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                            i.icon-eye-open
+                  .col-xs-4
+                    .portfolio-item
+                      .item-inner
+                        img.img-responsive alt="" src="images/portfolio/recent/item3.png" /
+                        h5
+                          | Fornax - Apps site template
+                        .overlay
+                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                            i.icon-eye-open
+              /! /.item
+      /! /.row
+  /! /#recent-works
+
+  section#testimonial.alizarin
+    .container
+      .row
+        .col-lg-12
+          .center
+            h2 What our clients say
+            p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          .gap
+          .row
+            .col-md-6
+              blockquote
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                small
+                  | Someone famous in
+                  cite title=("Source Title")  Source Title
+              blockquote
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                small
+                  | Someone famous in
+                  cite title=("Source Title")  Source Title
+            .col-md-6
+              blockquote
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                small
+                  | Someone famous in
+                  cite title=("Source Title")  Source Title
+              blockquote
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                small
+                  | Someone famous in
+                  cite title=("Source Title")  Source Title
+  /! /#testimonial
+
+  section#bottom.wet-asphalt
+    .container
+      .row
+        .col-md-3.col-sm-6
+          h4 About Us
+          p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+          p Pellentesque habitant morbi tristique senectus.
+        /! /.col-md-3
+        .col-md-3.col-sm-6
+          h4 Company
+          div
+            ul.arrow
+              li
+                a href="#"  Company Overview
+              li
+                a href="#"  Meet The Team
+              li
+                a href="#"  Our Awesome Partners
+              li
+                a href="#"  Our Services
+              li
+                a href="#"  Frequently Asked Questions
+              li
+                a href="#"  Conatct Us
+              li
+                a href="#"  Privacy Policy
+              li
+                a href="#"  Terms of Use
+              li
+                a href="#"  Copyright
+        /! /.col-md-3
+        .col-md-3.col-sm-6
+          h4 Latest Blog
+          div
+            .media
+              .pull-left
+                img alt="" src="images/blog/thumb1.jpg" /
+              .media-body
+                span.media-heading
+                  a href="#"  Pellentesque habitant morbi tristique senectus
+                small.muted Posted 17 Aug 2013
+            .media
+              .pull-left
+                img alt="" src="images/blog/thumb2.jpg" /
+              .media-body
+                span.media-heading
+                  a href="#"  Pellentesque habitant morbi tristique senectus
+                small.muted Posted 13 Sep 2013
+            .media
+              .pull-left
+                img alt="" src="images/blog/thumb3.jpg" /
+              .media-body
+                span.media-heading
+                  a href="#"  Pellentesque habitant morbi tristique senectus
+                small.muted Posted 11 Jul 2013
+        /! /.col-md-3
+        .col-md-3.col-sm-6
+          h4 Address
+          address
+            strong Twitter, Inc.
+            br/
+            | 795 Folsom Ave, Suite 600
+            br/
+            | San Francisco, CA 94107
+            br/
+            abbr title="Phone"  P:
+            | (123) 456-7890
+          h4 Newsletter
+          form role="form" 
+            .input-group
+              input.form-control autocomplete="off" placeholder=("Enter your email") type="text" /
+              span.input-group-btn
+                button.btn.btn-danger type="button"  Go!
+        /! /.col-md-3
+  /! /#bottom
+  footer#footer.midnight-blue
+    .container
+      .row
+        .col-sm-6
+          | &copy; 2013
+          a href="http://shapebootstrap.net/" target="_blank" title=("Free Twitter Bootstrap WordPress Themes and HTML templates")  ShapeBootstrap
+          | All Rights Reserved.
+        .col-sm-6
+          ul.pull-right
+            li
+              a href="#"  Home
+            li
+              a href="#"  About Us
+            li
+              a href="#"  Faq
+            li
+              a href="#"  Contact Us
+            li
+              a#gototop.gototop href="#" 
+                i.icon-chevron-up
+            /! #gototop
+  /! /#footer

@@ -1,0 +1,44 @@
+- @page = "Animes"
+- @page_description = "Anime is an art form, specifically animation, that includes all genres found in cinema, but it can be mistakenly classified as a genre."
+
+section#portfolio.container
+  ul.portfolio-filter
+    li
+      a.btn.btn-default.active data-filter="*" href="#"  All
+    li
+      a.btn.btn-default data-filter=".bootstrap" href="#"  Bootstrap
+    li
+      a.btn.btn-default data-filter=".html" href="#"  HTML
+    li
+      a.btn.btn-default data-filter=".wordpress" href="#"  Wordpress
+    
+    - unless current_tenant.eql?('public')
+      .pull-right
+        li
+          = link_to new_anime_path, :class => 'btn btn-info'
+            i.icon-plus
+            |  New Anime
+  /! /#portfolio-filter
+  
+  ul.portfolio-items.col-3
+    - @animes.each do |anime|
+      li.portfolio-item.apps
+        .item-inner
+          = image_tag(anime.image.large.url)
+          h5 = anime.title
+          .overlay
+            = link_to anime.image.url, class: "preview btn btn-info", rel: "prettyPhoto"
+              = fa_icon("picture-o")
+            |  
+            = link_to anime_path(anime), :class => 'preview btn btn-default'
+              i.icon-eye-open
+            |  
+            = link_to anime_path(anime), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'preview btn btn-danger'
+              i.icon-trash
+    /! /.portfolio-item
+    
+/! /#portfolio
+
+
+
+
