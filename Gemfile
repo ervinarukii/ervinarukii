@@ -51,6 +51,8 @@ end
 
 gem 'quiet_assets'
 
+gem 'react-rails', '~> 1.0'
+
 gem 'nprogress-rails'
 
 gem "therubyracer"
