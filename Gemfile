@@ -80,3 +80,5 @@ gem "mini_magick"
 gem 'searchkick'
 
 gem 'apartment'
+
+gem 'exception_notification'

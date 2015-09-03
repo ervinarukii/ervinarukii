@@ -84,6 +84,9 @@ GEM
       faraday
       multi_json
     erubis (2.7.0)
+    exception_notification (4.1.0)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -239,6 +242,7 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.0.0)
   devise
+  exception_notification
   font-awesome-rails
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
