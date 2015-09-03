@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  resources :animes
-
-  resources :companies
-  get 'enter-company' => 'companies#enter_company'
-  post 'assign-company' =>'companies#assign_company'
 
   devise_for :users
   get 'home/index'

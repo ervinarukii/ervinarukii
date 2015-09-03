@@ -12,7 +12,7 @@ default: &default
 
 development:
   <<: *default
-  database: rukimoera
+  database: ervinarukii
   username: postgres
   password: postgres
 
@@ -21,8 +21,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rukimoera
+  database: ervinarukii
 
 production:
   <<: *default
-  database: rukimoera
+  database: ervinarukii

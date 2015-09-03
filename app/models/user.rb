@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   friendly_id :username, use: :slugged
   mount_uploader :avatar, AvatarUploader
 
-  has_many :companies
+  # has_many :companies
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
