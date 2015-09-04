@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811071131) do
+ActiveRecord::Schema.define(version: 20150904035114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "animes", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "episodes"
+    t.string   "status"
+    t.date     "start_aired"
+    t.date     "end_aired"
+    t.integer  "producer_id"
+    t.string   "duration"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

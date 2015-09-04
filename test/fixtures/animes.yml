@@ -3,13 +3,21 @@
 one:
   title: MyString
   description: MyText
-  image: MyString
   episodes: MyString
-  company_id: 1
+  status: MyString
+  start_aired: 2015-09-04
+  end_aired: 2015-09-04
+  producer_id: 1
+  duration: MyString
+  user_id: 1
 
 two:
   title: MyString
   description: MyText
-  image: MyString
   episodes: MyString
-  company_id: 1
+  status: MyString
+  start_aired: 2015-09-04
+  end_aired: 2015-09-04
+  producer_id: 1
+  duration: MyString
+  user_id: 1

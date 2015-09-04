@@ -18,7 +18,7 @@ class AnimesControllerTest < ActionController::TestCase
 
   test "should create anime" do
     assert_difference('Anime.count') do
-      post :create, anime: { company_id: @anime.company_id, description: @anime.description, episodes: @anime.episodes, image: @anime.image, title: @anime.title }
+      post :create, anime: { description: @anime.description, duration: @anime.duration, end_aired: @anime.end_aired, episodes: @anime.episodes, producer_id: @anime.producer_id, start_aired: @anime.start_aired, status: @anime.status, title: @anime.title, user_id: @anime.user_id }
     end
 
     assert_redirected_to anime_path(assigns(:anime))
@@ -35,7 +35,7 @@ class AnimesControllerTest < ActionController::TestCase
   end
 
   test "should update anime" do
-    patch :update, id: @anime, anime: { company_id: @anime.company_id, description: @anime.description, episodes: @anime.episodes, image: @anime.image, title: @anime.title }
+    patch :update, id: @anime, anime: { description: @anime.description, duration: @anime.duration, end_aired: @anime.end_aired, episodes: @anime.episodes, producer_id: @anime.producer_id, start_aired: @anime.start_aired, status: @anime.status, title: @anime.title, user_id: @anime.user_id }
     assert_redirected_to anime_path(assigns(:anime))
   end
 

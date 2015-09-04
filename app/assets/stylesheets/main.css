@@ -874,11 +874,11 @@ ul.tag-cloud li {
   padding: 0;
 }
 .registration-form {
-  border: 0;
-  background-color: #fff;
+  border-radius: 10px;
+  background-color: #E5F6FD;
   padding: 20px;
   display: inline-block;
-  width: 70%;
+  width: 50%;
 
 }
 #bottom {

@@ -37,6 +37,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'thin'
+
 gem 'pg'
 
 gem 'spring', '~> 1.3.6'
@@ -79,6 +81,6 @@ gem "mini_magick"
 
 gem 'searchkick'
 
-gem 'apartment'
+# gem 'apartment'
 
 gem 'exception_notification'
