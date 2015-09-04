@@ -79,7 +79,7 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'http://ervinaruki.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'http://ervinarukii.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
@@ -87,13 +87,13 @@ Rails.application.configure do
     :enable_starttls_auto => true, # detects and uses STARTTLS
     :user_name => "ervina@41studio.com",
     :password  => "hu718YPIxJSIIAp459eqEg", # SMTP password is any valid API key
-    :domain => 'ervinaruki.herokuapp.com', # your domain to identify your server when connecting
+    :domain => 'ervinarukii.herokuapp.com', # your domain to identify your server when connecting
   }
 
   config.middleware.use ExceptionNotification::Rack,
     :email => {
       :email_prefix => "[Something went wrong] ",
-      :sender_address => %{"Rukiimoera Error" <rukiimoera@notifier.com>},
+      :sender_address => %{"ervinarukii error" <rukiimoera@notifier.com>},
       :exception_recipients => %w{ervina@41studio.com}
     }
 end
