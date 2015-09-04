@@ -21,7 +21,7 @@ Rails.application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
-
+  config.assets.compress = true
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
@@ -77,9 +77,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'erviaruki.herokuapp.com' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'http://erviaruki.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
@@ -87,7 +87,6 @@ Rails.application.configure do
     :enable_starttls_auto => true, # detects and uses STARTTLS
     :user_name => "ervina@41studio.com",
     :password  => "hu718YPIxJSIIAp459eqEg", # SMTP password is any valid API key
-    :authentication => 'plain', # Mandrill supports 'plain' or 'login'
     :domain => 'erviaruki.herokuapp.com', # your domain to identify your server when connecting
   }
 
