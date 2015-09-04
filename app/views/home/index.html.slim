@@ -26,7 +26,7 @@ body
         li data-slide-to="1" data-target="#main-slider" 
         li data-slide-to="2" data-target="#main-slider" 
       .carousel-inner
-        .item.active style="background-image: url('assets/slider/background1.jpg')"
+        .item.active style="background-image: url(#{image_path("slider/background1.jpg")})"
           .container
             .row
               .col-sm-12
@@ -34,7 +34,7 @@ body
                   h2.animation.animated-item-1 Welcome
                   p.animation.animated-item-2 this is my first website, yoroshiku ..
         /! /.item
-        .item style=("background-image: url('assets/slider/background2.jpg')") 
+        .item style=("background-image: url(#{image_path("slider/background2.jpg")})") 
           .container
             .row
               .col-sm-12
@@ -44,7 +44,7 @@ body
                   br/
                   a.btn.btn-md.animation.animated-item-3 href="#"  Learn More
         /! /.item
-        .item style=("background-image: url('assets/slider/background3.jpg')") 
+        .item style=("background-image: url(#{image_path("slider/background3.jpg")})") 
           .container
             .row
               .col-sm-6
