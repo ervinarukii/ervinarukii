@@ -1,0 +1,33 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @anime.title
+p
+  strong Description:
+  = @anime.description
+p
+  strong Episodes:
+  = @anime.episodes
+p
+  strong Status:
+  = @anime.status
+p
+  strong Start aired:
+  = @anime.start_aired
+p
+  strong End aired:
+  = @anime.end_aired
+p
+  strong Producer:
+  = @anime.producer_id
+p
+  strong Duration:
+  = @anime.duration
+p
+  strong User:
+  = @anime.user_id
+
+= link_to 'Edit', edit_anime_path(@anime)
+'|
+= link_to 'Back', animes_path

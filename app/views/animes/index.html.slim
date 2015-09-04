@@ -1,0 +1,37 @@
+h1 Listing animes
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th Episodes
+      th Status
+      th Start aired
+      th End aired
+      th Producer
+      th Duration
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @animes.each do |anime|
+      tr
+        td = anime.title
+        td = anime.description
+        td = anime.episodes
+        td = anime.status
+        td = anime.start_aired
+        td = anime.end_aired
+        td = anime.producer_id
+        td = anime.duration
+        td = anime.user_id
+        td = link_to 'Show', anime
+        td = link_to 'Edit', edit_anime_path(anime)
+        td = link_to 'Destroy', anime, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Anime', new_anime_path
