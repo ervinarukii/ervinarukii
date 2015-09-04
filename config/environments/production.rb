@@ -79,7 +79,7 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'http://ervinaruki.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'http://ervinaruki.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
@@ -92,8 +92,8 @@ Rails.application.configure do
 
   config.middleware.use ExceptionNotification::Rack,
     :email => {
-      :email_prefix => "[Something went wrong]",
-      :sender_address => %{"Rukiimoera Error ><" <rukiimoera@notifier.com>},
+      :email_prefix => "[Something went wrong] ",
+      :sender_address => %{"Rukiimoera Error" <rukiimoera@notifier.com>},
       :exception_recipients => %w{ervina@41studio.com}
     }
 end
