@@ -12,11 +12,31 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery-fileupload/basic
 //= require twitter/bootstrap
+//= require bootstrapValidator.min
 //= require turbolinks
 //= require react
 //= require react_ujs
 //= require components
 //= require nprogress
 //= require nprogress-turbolinks
+//= require bootstrap-datepicker
+//= require geocomplete
+//= require cocoon
+//= require video
+//= require braintree
 //= require_tree .
+
+var ready;
+
+ready = function() {
+  $('.datepicker').datepicker({
+    format: 'dd/mm/yyyy'
+  });
+};
+
+$(document).ready(ready);
+
+$(document).on('page:load', ready);

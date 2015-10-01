@@ -1,33 +1,204 @@
-p#notice = notice
+- meta title: @anime.title,
+        description: @anime.description
 
-p
-  strong Title:
+- @page = @anime.title
+- content_for :title
   = @anime.title
-p
-  strong Description:
-  = @anime.description
-p
-  strong Episodes:
-  = @anime.episodes
-p
-  strong Status:
-  = @anime.status
-p
-  strong Start aired:
-  = @anime.start_aired
-p
-  strong End aired:
-  = @anime.end_aired
-p
-  strong Producer:
-  = @anime.producer_id
-p
-  strong Duration:
-  = @anime.duration
-p
-  strong User:
-  = @anime.user_id
+  
+section#blog.container
+  .row
+    aside.col-sm-4.col-sm-push-8
+      .widget.search
+        form role="form" 
+          .input-group
+            input.form-control autocomplete="off" placeholder="Search" type="text" /
+            span.input-group-btn
+              button.btn.btn-danger type="button" 
+                i.icon-search
+      /! /.search
+      .widget.ads
+        .row
+          .col-xs-6
+            = image_tag "ads/ad1.jpg", class: "img-responsive img-rounded"
+          .col-xs-6
+            = link_to "#"
+              = image_tag "ads/ad2.png", class: "img-responsive img-rounded"
+        p
+        .row
+          .col-xs-6
+            = link_to "#"
+              = image_tag "ads/ad3.png", class: "img-responsive img-rounded"
+          .col-xs-6
+            = link_to "#"
+              = image_tag "ads/ad4.png", class: "img-responsive img-rounded"
 
-= link_to 'Edit', edit_anime_path(@anime)
-'|
-= link_to 'Back', animes_path
+      /! /.ads
+      .widget.categories
+
+        h3 Blog Categories
+        .row
+          .col-sm-6
+            ul.arrow
+              li
+                a href="#"  Development
+              li
+                a href="#"  Design
+              li
+                a href="#"  Updates
+              li
+                a href="#"  Tutorial
+              li
+                a href="#"  News
+          .col-sm-6
+            ul.arrow
+              li
+                a href="#"  Joomla
+              li
+                a href="#"  Wordpress
+              li
+                a href="#"  Drupal
+              li
+                a href="#"  Magento
+              li
+                a href="#"  Bootstrap
+      /! /.categories
+      .widget.tags
+        h3 Tag Cloud
+        ul.tag-cloud
+          li
+            a.btn.btn-xs.btn-primary href="#"  CSS3
+          li
+            a.btn.btn-xs.btn-primary href="#"  HTML5
+          li
+            a.btn.btn-xs.btn-primary href="#"  WordPress
+          li
+            a.btn.btn-xs.btn-primary href="#"  Joomla
+          li
+            a.btn.btn-xs.btn-primary href="#"  Drupal
+          li
+            a.btn.btn-xs.btn-primary href="#"  Bootstrap
+          li
+            a.btn.btn-xs.btn-primary href="#"  jQuery
+          li
+            a.btn.btn-xs.btn-primary href="#"  Tutorial
+          li
+            a.btn.btn-xs.btn-primary href="#"  Update
+      /! /.tags
+      .widget.facebook-fanpage
+        h3 Facebook Fanpage
+        .widget-content
+          .fb-like-box data-header="false" data-href="https://www.facebook.com/shapebootstrap" data-show-border="false" data-show-faces="true" data-stream="false" data-width="292" 
+    .col-sm-8.col-sm-pull-4
+      .blog
+        .blog-item
+          = image_tag @anime.image.url, class: "img-responsive img-blog"
+          .blog-content
+            h3 = @anime.title
+            .pull-right = link_to "Edit", edit_anime_path(@anime) if user_signed_in?
+            .entry-meta
+              span
+                i.icon-user
+                | &nbsp;
+                a href="#" = @anime.producer.name
+              | &nbsp;
+              span
+                i.icon-calendar
+                | &nbsp; Aired : 
+                = @anime.start_aired.strftime("%b %d, %Y")
+                | &nbsp; - 
+                = @anime.end_aired.strftime("%b %d, %Y")
+
+              span
+                i.icon-comment
+                a href="blog-item.html#comments"  3 Comments
+            p = @anime.description
+            p Downloads :
+            - @anime.videos.each do |video|
+              = link_to "Download #{video.title}", download_animes_path(id: video), { target: '_self' }
+              br
+              = videojs_rails sources: { mp4: video.file.url }, setup: "{}", controls: false, height: "400", width:"100%"
+    
+            hr/
+            .tags
+              i.icon-tags
+              | &nbsp;
+              | Genres : 
+              | &nbsp;
+              - @anime.genres.each do |genre|
+                = link_to animes_path(genre: genre.name), class: "btn btn-xs btn-primary"
+                  = genre.name
+                | &nbsp;
+
+            p &nbsp;
+            .author.well
+              .media
+                .pull-left
+                  = image_tag "chitoge.jpg", class: "avatar img-thumbnail", width: "85px"
+                .media-body
+                  .media-heading
+                    strong John Doe
+                  p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+
+            /! /.author
+            / #comments
+            /   #comments-list
+            /     h3 3 Comments
+            /     .media
+            /       .pull-left
+            /         img.avatar.img-circle alt="" src="images/blog/avatar1.png" /
+            /       .media-body
+            /         .well
+            /           .media-heading
+            /             strong> John Doe
+            /             | \&nbsp;
+            /             small 27 Aug 2013
+            /             a.pull-right href="#" 
+            /               i.icon-repeat
+            /               | Reply
+            /           p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+            /         .media
+            /           .pull-left
+            /             img.avatar.img-circle alt="" src="images/blog/avatar3.png" /
+            /           .media-body
+            /             .well
+            /               .media-heading
+            /                 strong> John Doe
+            /                 | \&nbsp;
+            /                 small 27 Aug 2013
+            /                 a.pull-right href="#" 
+            /                   i.icon-repeat
+            /                   | Reply
+            /               p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+            /         /! /.media
+            /     /! /.media
+            /     .media
+            /       .pull-left
+            /         img.avatar.img-circle alt="" src="images/blog/avatar2.png" /
+            /       .media-body
+            /         .well
+            /           .media-heading
+            /             strong> John Doe
+            /             | \&nbsp;
+            /             small 27 Aug 2013
+            /             a.pull-right href="#" 
+            /               i.icon-repeat
+            /               | Reply
+            /           p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+            /     /! /.media
+            /   /! /#comments-list
+            /   #comment-form
+            /     h3 Leave a comment
+            /     form.form-horizontal role="form" 
+            /       .form-group
+            /         .col-sm-6
+            /           input.form-control placeholder="Name" type="text" /
+            /         .col-sm-6
+            /           input.form-control placeholder="Email" type="email" /
+            /       .form-group
+            /         .col-sm-12
+            /           textarea.form-control placeholder="Comment" rows="8" 
+            /       button.btn.btn-danger.btn-lg type="submit"  Submit Comment
+              /! /#comment-form
+            /! /#comments
+        /! /.blog-item
+    /! /.col-md-8

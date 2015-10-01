@@ -1,36 +1,53 @@
-= form_for @anime do |f|
-  - if @anime.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@anime.errors.count, "error")} prohibited this anime from being saved:"
-      ul
-        - @anime.errors.full_messages.each do |message|
-          li = message
+section#registration.container
+  = form_for @anime, html: {class: "center", id: "form-anime"} do |f|
+    - if @anime.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@anime.errors.count, "error")} prohibited this anime from being saved:"
+        ul
+          - @anime.errors.full_messages.each do |message|
+            li = message
+    fieldset.registration-form
+      .form-group
+        = f.text_field :title, class: "form-control", placeholder: "Title"
+      .form-group
+        = f.text_area :description, class: "form-control", placeholder: "Enter description here .."
+      .form-group
+        = f.label :image
+        = f.file_field :image
+      .form-group
+        = f.text_field :episodes, class: "form-control", placeholder: "Episodes"
+      .form-group
+        = f.select :status,  options_for_select(["Currently Airing", "Finished"], params[:status]), {prompt: "- select status-"}, {class: "form-control", placeholder: "Genre"}
+      .form-group
+        = f.text_field :start_aired, class: "form-control datepicker", placeholder: "Start aired"
+      .form-group
+        = f.text_field :end_aired, class: "form-control datepicker", placeholder: "End aired"
+      .form-group
+        = f.text_field :duration, class: "form-control", placeholder: "Duration per-episodes"
+      .form-group
+        = f.select(:producer_id, Producer.all.collect {|p| [p.name, p.id]}, {:include_blank => "Select"}, {:class => "form-control"} )
+      .form-group
+        = f.label :videos
+        = f.hidden_field :video_ids
+      #videos
+        = f.fields_for :videos do |video|
+          = render 'video_fields', f: video
+        .links
+          = link_to_add_association 'Add Video', f, :videos, class: "btn btn-default"
+      br
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :episodes
-    = f.text_field :episodes
-  .field
-    = f.label :status
-    = f.text_field :status
-  .field
-    = f.label :start_aired
-    = f.date_select :start_aired
-  .field
-    = f.label :end_aired
-    = f.date_select :end_aired
-  .field
-    = f.label :producer_id
-    = f.number_field :producer_id
-  .field
-    = f.label :duration
-    = f.text_field :duration
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .actions = f.submit
+      .form-group
+        = f.submit "Save", class: "btn-loading button btn btn-info btn-md btn-block"
+
+- content_for :javascript
+  = javascript_include_tag "animes",  "data-turbolinks-track" => true
+
+  javascript:
+    var fileUploadErrors = {
+      maxFileSize: 'File is too big',
+      minFileSize: 'File is too small',
+      acceptFileTypes: 'Filetype not allowed',
+      maxNumberOfFiles: 'Max number of files exceeded',
+      uploadedBytes: 'Uploaded bytes exceed file size',
+      emptyResult: 'Empty file upload result'
+    };

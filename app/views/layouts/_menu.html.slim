@@ -10,45 +10,51 @@ header.navbar.navbar-inverse.navbar-fixed-top.wet-asphalt role="banner"
         = image_tag "logo.png", alt: "logo"
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
+        li
+          = link_to animes_path
+            = fa_icon 'youtube-play'
+            | &nbsp;
+            |  Animes
         / li
-        /   a href="about-us.html"  About Us
-        / li
-        /   a href="services.html"  Services
-        / li
-        /   a href="portfolio.html"  Portfolio
+        /   = link_to producers_path
+        /     = fa_icon 'users'
+        /     |  Producers  
+
         - if user_signed_in?
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown" href="#" 
+              = image_tag current_user.avatar.thumb.url, width: "20px", class: "img-circle"
+              | &nbsp;&nbsp;
               = "#{current_user.first_name} #{current_user.last_name}"
-              | 
+              | &nbsp;
               i.icon-angle-down
             ul.dropdown-menu
               li
-                = link_to "Edit Profile", edit_user_registration_path
-              / li
-              /   a href="career.html"  Career
-              / li
-              /   a href="blog-item.html"  Blog Single
-              / li
-              /   a href="pricing.html"  Pricing
-              / li
-              /   a href="404.html"  404
-              / li
-              /   a href="registration.html"  Registration
-              li.divider
-                li
-                  = link_to "Logout", destroy_user_session_path, :method => :delete
-              / li
-              /   a href="privacy.html"  Privacy Policy
-              / li
-              /   a href="terms.html"  Terms of Use
-        - else
-          li
-            = link_to "Sign In", new_user_session_path
-          li
-            = link_to "Sign Up", new_user_registration_path
-        / li
-        /   a href="blog.html"  Blog
-        / li
-        /   a href="connew_user_sessiontact-us.html"  Contact
+                = link_to edit_user_registration_path
+                  = fa_icon "pencil"
+                  | &nbsp;&nbsp;
+                  |  Edit Profile
+              
+              li
+                = link_to payment_path
+                  = fa_icon 'credit-card'
+                  | &nbsp;
+                  |  Payment
+
+              li
+                = link_to destroy_user_session_path, :method => :delete
+                  = fa_icon "sign-out"
+                  | &nbsp;&nbsp;
+                  |  Logout
+
+        / - else
+        /   li
+        /     = link_to new_user_session_path
+        /       = fa_icon "sign-in"
+        /       |  Sign In
+        /   li
+        /     = link_to new_user_registration_path
+        /       = fa_icon "users"
+        /       |  Sign Out
+              
 /! /header

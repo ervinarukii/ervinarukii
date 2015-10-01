@@ -73,7 +73,7 @@ body
             .pull-left
               i.icon-twitter.icon-md
             .media-body
-              h3.media-heading Twitter Marketing
+              h3.media-heading Twitter
               p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
         /! /.col-md-4
         .col-md-4.col-sm-6
@@ -81,7 +81,7 @@ body
             .pull-left
               i.icon-facebook.icon-md
             .media-body
-              h3.media-heading Facebook Marketing
+              h3.media-heading Facebook
               p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
         /! /.col-md-4
         .col-md-4.col-sm-6
@@ -89,7 +89,7 @@ body
             .pull-left
               i.icon-google-plus.icon-md
             .media-body
-              h3.media-heading Google Plus Marketing
+              h3.media-heading Google Plus
               p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
         /! /.col-md-4
   /! /#services
@@ -99,7 +99,7 @@ body
       = bootstrap_flash
       .row
         .col-md-3
-          h3 Our Latest Project
+          h3 Latest Anime
           p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
           .btn-group
             a.btn.btn-danger data-slide="prev" href="#scroller" 
@@ -112,64 +112,30 @@ body
             .carousel-inner
               .item.active
                 .row
-                  .col-xs-4
-                    .portfolio-item
-                      .item-inner
-                        img.img-responsive alt="" src="images/portfolio/recent/item1.png" /
-                        h5
-                          | Nova - Corporate site template
-                        .overlay
-                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
-                            i.icon-eye-open
-                  .col-xs-4
-                    .portfolio-item
-                      .item-inner
-                        img.img-responsive alt="" src="images/portfolio/recent/item3.png" /
-                        h5
-                          | Fornax - Apps site template
-                        .overlay
-                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
-                            i.icon-eye-open
-                  .col-xs-4
-                    .portfolio-item
-                      .item-inner
-                        img.img-responsive alt="" src="images/portfolio/recent/item2.png" /
-                        h5
-                          | Flat Theme - Business Theme
-                        .overlay
-                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
-                            i.icon-eye-open
+                  - @animes_active.each do |anime|
+                    .col-xs-4
+                      .portfolio-item
+                        .item-inner
+                          = image_tag anime.image.medium_logo.url, class: "img-responsive"
+                          h5
+                            = anime.title
+                          .overlay
+                            a.preview.btn.btn-danger href="#{anime.image.url}" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                              i.icon-eye-open
                 /! /.row
               /! /.item
               .item
                 .row
-                  .col-xs-4
-                    .portfolio-item
-                      .item-inner
-                        img.img-responsive alt="" src="images/portfolio/recent/item2.png" /
-                        h5
-                          | Flat Theme - Business Theme
-                        .overlay
-                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
-                            i.icon-eye-open
-                  .col-xs-4
-                    .portfolio-item
-                      .item-inner
-                        img.img-responsive alt="" src="images/portfolio/recent/item1.png" /
-                        h5
-                          | Nova - Corporate site template
-                        .overlay
-                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
-                            i.icon-eye-open
-                  .col-xs-4
-                    .portfolio-item
-                      .item-inner
-                        img.img-responsive alt="" src="images/portfolio/recent/item3.png" /
-                        h5
-                          | Fornax - Apps site template
-                        .overlay
-                          a.preview.btn.btn-danger href="images/portfolio/full/item1.jpg" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
-                            i.icon-eye-open
+                  - @animes.each do |anime|
+                    .col-xs-4
+                      .portfolio-item
+                        .item-inner
+                          = image_tag anime.image.medium_logo.url, class: "img-responsive"
+                          h5
+                            = anime.title
+                          .overlay
+                            a.preview.btn.btn-danger href="#{anime.image.url}" rel="prettyPhoto" title=("Malesuada fames ac turpis egestas") 
+                              i.icon-eye-open
               /! /.item
       /! /.row
   /! /#recent-works
@@ -243,21 +209,21 @@ body
           div
             .media
               .pull-left
-                img alt="" src="images/blog/thumb1.jpg" /
+                img alt="" src="assets/blog/thumb1.jpg" /
               .media-body
                 span.media-heading
                   a href="#"  Pellentesque habitant morbi tristique senectus
                 small.muted Posted 17 Aug 2013
             .media
               .pull-left
-                img alt="" src="images/blog/thumb2.jpg" /
+                img alt="" src="assets/blog/thumb2.jpg" /
               .media-body
                 span.media-heading
                   a href="#"  Pellentesque habitant morbi tristique senectus
                 small.muted Posted 13 Sep 2013
             .media
               .pull-left
-                img alt="" src="images/blog/thumb3.jpg" /
+                img alt="" src="assets/blog/thumb3.jpg" /
               .media-body
                 span.media-heading
                   a href="#"  Pellentesque habitant morbi tristique senectus

@@ -1,0 +1,18 @@
+= form_tag checkout_path, id: "checkout", class: "checkout" do ||
+  - unless current_user.has_payment_info?
+    h4 Please enter your personal info:
+    .form-group
+      = text_field_tag "customer[first_name]", nil, class: "form-control", placeholder: "First Name"
+    .form-group
+      = text_field_tag "customer[last_name]", nil, class: "form-control", placeholder: "Last Name"
+    .form-group
+      = text_field_tag "customer[email]", nil, class: "form-control", placeholder: "Email"
+    .form-group
+      = text_field_tag "customer[phone]", nil, class: "form-control", placeholder: "Email"
+
+  / h4 Please enter your payment details: 
+  #payment-form
+  .form-group
+    = text_field_tag :amount, nil, class: "form-control", placeholder: "$ 200"
+  .form-group
+    = submit_tag "Pay", class: "btn btn-success"

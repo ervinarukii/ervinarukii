@@ -4,9 +4,12 @@ html lang="en"
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    title= content_for?(:title) ? yield(:title) : "Rukimoera"
+    title= content_for?(:title) ? yield(:title) : "ervinarukii"
     = csrf_meta_tags
+    = metamagic
 
+    script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false" type="text/javascript" 
+ 
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
@@ -16,17 +19,20 @@ html lang="en"
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-    = javascript_include_tag "application"
-
+    = javascript_include_tag "application",  "data-turbolinks-track" => true
 
 
   body
+    = include_gon
     = render 'layouts/menu'
     section#title.emerald
       .container
         .row
           .col-sm-6
-            h1 = @page
+            h1 
+              = fa_icon "#{@page_icon}"
+              |&nbsp;
+              = @page
             p = @page_description
           .col-sm-6
             ul.breadcrumb.pull-right
@@ -34,4 +40,107 @@ html lang="en"
                 = link_to "Home", root_path
               li.active = @page
     .container= bootstrap_flash
+    
     = yield
+
+    section#bottom.wet-asphalt
+      .container
+        .row
+          .col-md-3.col-sm-6
+            h4 About Us
+            p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+            p Pellentesque habitant morbi tristique senectus.
+          /! /.col-md-3
+          .col-md-3.col-sm-6
+            h4 Company
+            div
+              ul.arrow
+                li
+                  a href="#"  The Company
+                li
+                  a href="#"  Our Team
+                li
+                  a href="#"  Our Partners
+                li
+                  a href="#"  Our Services
+                li
+                  a href="#"  Faq
+                li
+                  a href="#"  Conatct Us
+                li
+                  a href="#"  Privacy Policy
+                li
+                  a href="#"  Terms of Use
+                li
+                  a href="#"  Copyright
+          /! /.col-md-3
+          .col-md-3.col-sm-6
+            h4 Latest Blog
+            div
+              .media
+                .pull-left
+                  img alt="" src="/assets/blog/thumb1.jpg" /
+                .media-body
+                  span.media-heading
+                    a href="#"  Pellentesque habitant morbi tristique senectus
+                  small.muted Posted 17 Aug 2013
+              .media
+                .pull-left
+                  img alt="" src="/assets/blog/thumb2.jpg" /
+                .media-body
+                  span.media-heading
+                    a href="#"  Pellentesque habitant morbi tristique senectus
+                  small.muted Posted 13 Sep 2013
+              .media
+                .pull-left
+                  img alt="" src="/assets/blog/thumb3.jpg" /
+                .media-body
+                  span.media-heading
+                    a href="#"  Pellentesque habitant morbi tristique senectus
+                  small.muted Posted 11 Jul 2013
+          /! /.col-md-3
+          .col-md-3.col-sm-6
+            h4 Address
+            address
+              strong Twitter, Inc.
+              br/
+              | 795 Folsom Ave, Suite 600
+              br/
+              | San Francisco, CA 94107
+              br/
+              abbr title="Phone"  P:
+              | (123) 456-7890
+            h4 Newsletter
+            form role="form" 
+              .input-group
+                input.form-control autocomplete="off" placeholder=("Enter your email") type="text" /
+                span.input-group-btn
+                  button.btn.btn-danger type="button"  Go!
+          /! /.col-md-3
+    /! /#bottom
+
+
+    footer#footer.midnight-blue
+      .container
+        .row
+          .col-sm-6
+            | &copy; 2013 
+            a href="http://shapebootstrap.net/" target="_blank" title=("Free Twitter Bootstrap WordPress Themes and HTML templates")  ShapeBootstrap
+            |  All Rights Reserved.
+          .col-sm-6
+            ul.pull-right
+              li
+                a href="#"  Home
+              li
+                a href="#"  About Us
+              li
+                a href="#"  Faq
+              li
+                a href="#"  Contact Us
+              li
+                a#gototop.gototop href="#" 
+                  i.icon-chevron-up
+              /! #gototop
+    /! /#footer
+
+    = yield :javascript

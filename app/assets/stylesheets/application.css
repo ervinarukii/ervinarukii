@@ -13,6 +13,9 @@
  *= require font-awesome
  *= require nprogress
  *= require nprogress-bootstrap
+ *= require bootstrap-datepicker
+ *= require bootstrapValidator.min
  *= require_tree .
  *= require_self
+ *= require video-js
  */

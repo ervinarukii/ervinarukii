@@ -1,9 +1,29 @@
 Rails.application.routes.draw do
 
-  resources :animes
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
+  
+  resources :producers
+
+  resources :animes do
+    collection do
+      get :download
+      post :upload_video
+    end
+  end
+
+  # get "/client_token" => 'home#client_token' do
+  #   Braintree::ClientToken.generate
+  # end
+  
   devise_for :users
+  get 'payments/webhooks'
+  post 'payments/webhooks'
   get 'home/index'
+  get 'payment' => "payments#payment"
+  post 'checkout' => "payments#checkout"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,37 +1,51 @@
-h1 Listing animes
+- @page = "Anime List"
+- content_for :title do
+  = "Anime List"
 
-table
-  thead
-    tr
-      th Title
-      th Description
-      th Episodes
-      th Status
-      th Start aired
-      th End aired
-      th Producer
-      th Duration
-      th User
-      th
-      th
-      th
+section#portfolio.container
+  / ul.portfolio-filter
+  /   li
+  /     a.btn.btn-default.active data-filter="*" href="#"  All
+  /   li
+  /     a.btn.btn-default data-filter=".bootstrap" href="#"  Bootstrap
+  /   li
+  /     a.btn.btn-default data-filter=".html" href="#"  HTML
+  /   li
+  /     a.btn.btn-default data-filter=".wordpress" href="#"  Wordpress
+  /! /#portfolio-filter
+  
+  .portfolio-filter
+    = form_tag animes_path, class: "form-inline", method: :get do
+      .form-group
+        = text_field_tag :keyword, params[:keyword], class: "form-control", placeholder: "Title"
+      / .form-group
+      /   = select_tag :producer, options_from_collection_for_select(Producer.all, "name", "name", params[:producer]), prompt: "- producer -", class: "form-control"
+      .form-group
+        = select_tag :genre, options_from_collection_for_select(Genre.all, "name", "name", params[:genre]), prompt: "- genre -", class: "form-control"
+      .form-group
+        = select_tag :status,  options_for_select(["Currently Airing", "Finished"], params[:status]), prompt: "- select status-", class: "form-control"
+      .form-group
+        = text_field_tag :gte, params[:gte], class: "form-control datepicker", placeholder: "Start Aired"
+      .form-group
+        = text_field_tag :lte, params[:lte], class: "form-control datepicker", placeholder: "End Aired"
 
-  tbody
+      = submit_tag "Search", class: "btn btn-default"
+
+      - if user_signed_in?
+        = link_to new_anime_path, class: "btn btn-info pull-right"
+          = fa_icon "pencil"
+          |  New Anime
+
+
+  ul.portfolio-items.col-3
     - @animes.each do |anime|
-      tr
-        td = anime.title
-        td = anime.description
-        td = anime.episodes
-        td = anime.status
-        td = anime.start_aired
-        td = anime.end_aired
-        td = anime.producer_id
-        td = anime.duration
-        td = anime.user_id
-        td = link_to 'Show', anime
-        td = link_to 'Edit', edit_anime_path(anime)
-        td = link_to 'Destroy', anime, data: {:confirm => 'Are you sure?'}, :method => :delete
+      li.portfolio-item.apps
+        .item-inner
+          = image_tag anime.image.large.url
+          h5 = anime.title
+          .overlay
+            = link_to anime_path(anime), class: "preview btn btn-danger"
+              = fa_icon "eye"
 
-br
-
-= link_to 'New Anime', new_anime_path
+  .pagination.pagination-lg
+    = paginate @animes
